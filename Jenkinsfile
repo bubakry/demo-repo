@@ -50,7 +50,7 @@ pipeline {
     stage ('Slack Notification') {
       steps {
         echo "deployed to DEV Env successfully"
-        slackSend(channel:'rbdev', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        slackSend(channel:'rbdev', message: "Job is successful!, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
       }
     }
     stage ('DEV Approve') {
