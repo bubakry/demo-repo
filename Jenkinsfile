@@ -22,6 +22,7 @@ pipeline {
       jacoco()
       }
     }
+    
     stage ('Nexus Upload') {
       steps {
       nexusArtifactUploader(
