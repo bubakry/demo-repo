@@ -2,7 +2,7 @@ name: Create main pull request
 on:
   push:
     branches:
-      - main, QA
+      - main
 jobs:
   updateAuthor:
     runs-on: ubuntu-latest
@@ -21,9 +21,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           branch: develop
-          target_branch: QA
-          base: main
-          
+          base: QA
           title: "demo for auto pr"
           committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
           author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
