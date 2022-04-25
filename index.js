@@ -4,4 +4,3 @@ function myFunction() {
 }
 let x = "Odugbesan ADedayo";
 
-let x = 0;
