@@ -2,7 +2,7 @@ name: Create main pull request
 on:
   push:
     branches:
-      - main
+      - main, QA
 jobs:
   updateAuthor:
     runs-on: ubuntu-latest
@@ -16,20 +16,6 @@ jobs:
         
       - name: Update author information
         run: echo ${{ env.GIT_COMMIT_AUTHOR_NAME }} > AUTHOR
-        
-    - name: Create Second Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          branch: develop
-          base: QA
-          
-          title: "demo for auto pr"
-          committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
-          author: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
-          body:
-            This is to show automatic PR creation
-          token: ${{ secrets.GITHUB_TOKEN }}
-          delete-branch: false
         
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
