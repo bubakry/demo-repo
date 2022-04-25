@@ -21,7 +21,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           branch: develop
-          base: main
+          base: main, QA
           
           title: "demo for auto pr"
           committer: ${{ env.GIT_COMMIT_AUTHOR_NAME }} <${{ env.GIT_COMMIT_AUTHOR_EMAIL }}">
