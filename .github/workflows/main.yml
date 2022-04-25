@@ -1,4 +1,6 @@
 # This is a basic workflow to help you get started with Actions
+- name: GitHub Pull Request Action
+  uses: repo-sync/pull-request@v2.6.2
 
 name: CI
 
