@@ -17,9 +17,11 @@ jobs:
       - name: Update author information
         run: echo ${{ env.GIT_COMMIT_AUTHOR_NAME }} > AUTHOR
         
-      - branch: QA
-        description: QA branch
-        default: QA
+    - name: Create Second Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: develop
+          base: QA
         
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
