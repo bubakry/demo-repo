@@ -27,7 +27,8 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest discover tests  # Assuming tests are in the 'tests' directory.
+        python -m unittest discover -s tests -p "*_test.py"
+
 
     # This section is a placeholder. You would replace this with actual deployment steps.
     - name: Deploy
