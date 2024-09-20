@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+<h2>An app about Cryptography</h2>
 </body>
 </html>
