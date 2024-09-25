@@ -1,4 +1,4 @@
-name: Python CI/CD Pipeline
+name: CI/CD Pipeline
 
 # Defines when the action will run. This configuration triggers the workflow on push
 # events to the main branch and pull requests to the main branch.
