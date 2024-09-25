@@ -28,11 +28,11 @@ pipeline {
       nexusArtifactUploader(
       nexusVersion: 'nexus3',
       protocol: 'http',
-      nexusUrl: 'ec2-18-189-102-24.us-east-2.compute.amazonaws.com:8081',
-      groupId: 'myGroupId',
+      nexusUrl: 'ec2-18-205-34-5.compute-1.amazonaws.com:8081',
+      groupId: 'com.dept.app',
       version: '1.0-SNAPSHOT',
       repository: 'maven-snapshots',
-      credentialsId: '1d233983-e9b1-45ac-a1e5-0c69f13e6191',
+      credentialsId: 'a91ea448-5887-4d9e-bc96-3ee9d43a6b25',
       artifacts: [
       [artifactId: 'MyWebApp',
       classifier: '',
@@ -44,13 +44,13 @@ pipeline {
     stage ('DEV Deploy') {
       steps {
       echo "deploying to DEV Env"
-      deploy adapters: [tomcat9(credentialsId: '34d53dfe-c3fe-4188-b61f-be03043f361e', path: '', url: 'http://ec2-3-142-195-208.us-east-2.compute.amazonaws.com:8080')], contextPath: null, war: '**/*.war'
+      deploy adapters: [tomcat9(credentialsId: 'Tomcat credentials', path: '', url: 'http://ec2-98-82-39-195.compute-1.amazonaws.com:8080')], contextPath: null, war: '**/*.war'
       }
     }
     stage ('Slack Notification') {
       steps {
         echo "deployed to DEV Env successfully"
-        slackSend(channel:'rbdev', message: "Job is successful!, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        slackSend(channel:'devops-demo-project', message: "Deployment to Dev Env was successful!, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
       }
     }
     stage ('DEV Approve') {
@@ -64,7 +64,7 @@ pipeline {
      stage ('QA Deploy') {
       steps {
         echo "deploying to QA Env "
-        deploy adapters: [tomcat9(credentialsId: '34d53dfe-c3fe-4188-b61f-be03043f361e', path: '', url: 'http://ec2-18-216-30-95.us-east-2.compute.amazonaws.com:8080')], contextPath: null, war: '**/*.war'
+        deploy adapters: [tomcat9(credentialsId: 'Tomcat credentials', path: '', url: 'http://ec2-98-82-39-195.compute-1.amazonaws.com:8080')], contextPath: null, war: '**/*.war'
       }
     }
     stage ('QA Approve') {
@@ -78,7 +78,7 @@ pipeline {
     stage ('Slack Notification for QA Deploy') {
       steps {
         echo "deployed to QA Env successfully"
-        slackSend(channel:'rbdev', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        slackSend(channel:'devops-demo-project', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
       }
     }  
   }
